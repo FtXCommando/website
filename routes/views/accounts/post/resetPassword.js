@@ -18,6 +18,8 @@ exports = module.exports = function (req, res) {
 
   //Must have client side errors to fix
   if (errors) {
+	console.log('Resetting password form submit errored: ' + errors + '');
+	  
     flash.class = 'alert-danger';
     flash.messages = errors;
     flash.type = 'Error!';
@@ -29,6 +31,8 @@ exports = module.exports = function (req, res) {
 
     let overallRes = res;
 
+	console.log('Resetting password invoked at API for identifier `' + identifier + '`');
+	
     //Run post to reset endpoint
     request.post({
       url: process.env.API_URL + '/users/resetPassword',
@@ -39,6 +43,7 @@ exports = module.exports = function (req, res) {
       let errorMessages = [];
 
       if (res.statusCode !== 200) {
+		console.log('Resetting password request to API for identifier `' + identifier + '` failed with status code: ' + res.statusCode);
         try {
           resp = JSON.parse(body);
         } catch (e) {

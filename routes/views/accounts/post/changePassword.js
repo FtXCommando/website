@@ -37,8 +37,10 @@ exports = module.exports = function(req, res) {
 		let username = req.body.username;
 
 		let overallRes = res;
+		
+		console.log('Changing password invoked at API for username `' + username + '`');
 
-		//Run post to reset endpoint
+		//Run post to change pw endpoint
 		request.post({
 			url: process.env.API_URL + '/users/changePassword',
 			headers: {'Authorization': 'Bearer ' + req.user.data.attributes.token},
@@ -49,6 +51,7 @@ exports = module.exports = function(req, res) {
 			let errorMessages = [];
 
 			if (res.statusCode !== 200) {
+				console.log('Changing password request to API for username `' + username + '` failed with status code: ' + res.statusCode);
 				try {
 					resp = JSON.parse(body)
 				} catch (e) {
@@ -60,7 +63,7 @@ exports = module.exports = function(req, res) {
 					return overallRes.render('account/changePassword', {flash: flash});
 				}
 
-				// Failed resetting password
+				// Failed changing password
 				for (let i = 0; i < resp.errors.length; i++) {
 					let error = resp.errors[i];
 
@@ -74,7 +77,7 @@ exports = module.exports = function(req, res) {
 				return overallRes.render('account/changePassword', {flash: flash});
 			}
 
-			// Successfully reset password
+			// Successfully changed password
 			flash.class = 'alert-success';
 			flash.messages = [{msg: 'Your password was changed successfully. Please use the new password to log in!'}];
 			flash.type = 'Success!';
