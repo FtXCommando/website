@@ -2,7 +2,7 @@ let flash = {};
 let request = require('request');
 
 exports = module.exports = function (req, res) {
-
+  console.log('Invoked POST /account/password/reset');
   let locals = res.locals;
 
   locals.formData = req.body || {};
@@ -54,14 +54,14 @@ exports = module.exports = function (req, res) {
 
           return overallRes.render('account/resetPassword', {flash: flash});
         }
+	  }
 
-        // Successfully reset password
-        flash.class = 'alert-success';
-        flash.messages = [{msg: 'Your password is in the process of being reset, please reset your password by clicking on the link provided in an email.'}];
-        flash.type = 'Success!';
+      // Successfully reset password
+      flash.class = 'alert-success';
+      flash.messages = [{msg: 'Your password is in the process of being reset, please reset your password by clicking on the link provided in an email.'}];
+      flash.type = 'Success!';
 
-        overallRes.render('account/resetPassword', {flash: flash});
-      }
+      overallRes.render('account/resetPassword', {flash: flash});
     });
   }
 };
