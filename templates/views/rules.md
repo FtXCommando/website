@@ -27,7 +27,7 @@ This is a short overview of the rules. For any moderating purpose, only the comp
 - **Do not invade other people's privacy.**
 - **Do not use FAF to violate any laws.**
 - **Do not abuse by using multiple accounts.**
-- **Do not manipulate your account information.**
+- **Do not manipulate your account information.**rt
 - **Do not abuse any game bugs and/or exploits.** [Exploits are listed here](http://forums.faforever.com/viewtopic.php?f=2&t=11322#p116202)
 - **Do not discuss drugs, illegal content or pornography.**
 - **Do not spam nor impersonate any other user, or take bots names.**
